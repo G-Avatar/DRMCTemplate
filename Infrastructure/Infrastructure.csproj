@@ -1,14 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.14">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.14" />
-    <!-- Overrides 9.0.11 from Microsoft.Data.SqlClient (GHSA-846f-f764-76mx); drop once SqlClient ships a fixed version -->
-    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.14" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.14">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.14" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.14" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.14" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="10.0.14" />
+		<PackageReference Include="OpenIddict.EntityFrameworkCore" Version="7.8.0" />
+		<!-- Overrides 9.0.11 from Microsoft.Data.SqlClient (GHSA-846f-f764-76mx); drop once SqlClient ships a fixed version -->
+		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.14" />
+	</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />

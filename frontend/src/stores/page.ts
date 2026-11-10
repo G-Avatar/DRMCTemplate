@@ -1,8 +1,9 @@
 import { reactive } from 'vue'
+import type { IAccount } from '@/interfaces/global/IAccount'
 
 const Page: {
     loaded: boolean
-    user: object | null
+    user: IAccount | null
     sidebar: boolean
     menu: 'desktop' | 'mobile'
     successLoading: boolean

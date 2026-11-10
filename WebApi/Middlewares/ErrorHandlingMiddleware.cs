@@ -22,6 +22,7 @@ public class ErrorHandlingMiddleware(
         catch (AppException ex) when (!context.Response.HasStarted)
         {
             _logger.LogWarning(
+                ex,
                 "Request failed with status {StatusCode}. Message: {Message}, TraceId: {TraceId}",
                 ex.StatusCode,
                 ex.Message,

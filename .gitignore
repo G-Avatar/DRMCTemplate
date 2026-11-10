@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 # Local secrets (copy .env.example to .env)
 .env
+
+WebApi/wwwroot

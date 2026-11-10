@@ -17,8 +17,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  server: {
+    // DRMCAppManagement only redirects back to the URL registered for this app, so the port must not drift.
+    port: 5174,
+    strictPort: true,
+    // Same origin in dev too, so the session cookie works. The API also runs the sign-in pages. 7201 is the WebApi https profile.
+    proxy: { '^/(api|callback)': { target: 'https://localhost:7201', secure: false } },
+  },
   build: {
-    outDir: '../PickleForest/wwwroot',
+    outDir: '../WebApi/wwwroot',
     emptyOutDir: true,
     rollupOptions: {
       output: {

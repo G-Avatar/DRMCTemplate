@@ -1,4 +1,6 @@
-﻿using Infrastructure.Persistence.Context;
+﻿using Application.Interfaces;
+using Infrastructure.Persistence.Context;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +20,12 @@ namespace Infrastructure
             }
 
             services.AddDbContext<PayrollDbContext>(options => options.UseSqlServer(connectionString));
+
+            // Scoped
+            services.AddScoped<IAuthSessionRepository, AuthSessionRepository>();
+
+            // Singleton
+
 
             return services;
         }

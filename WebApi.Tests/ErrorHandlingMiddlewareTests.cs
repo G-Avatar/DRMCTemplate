@@ -1,4 +1,5 @@
 using Application.Common.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -15,6 +16,7 @@ namespace WebApi.Tests
         {
             // CI has no .env; the DbContext is registered but never opened in these tests
             builder.UseSetting("ConnectionStrings:PayrollDb", "Server=unused");
+            builder.UseSetting("Sso:ClientSecret", "test-only-secret");
             builder.ConfigureServices(services =>
                 services.AddControllers().AddApplicationPart(typeof(ThrowController).Assembly));
         }).CreateClient();
@@ -59,6 +61,7 @@ namespace WebApi.Tests
     }
 
     // Actions must stay instance methods: MVC ignores static methods, so "Make static" breaks these routes
+    [AllowAnonymous]
     [ApiController]
     [Route("test")]
     public class ThrowController : ControllerBase
