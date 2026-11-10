@@ -1,0 +1,24 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".env" />
+    <File Path=".env.example" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="Application/Application.csproj" Id="816b8bb1-d8af-4b87-b58a-dfff65b608d3" />
+    <Project Path="Domain/Domain.csproj" Id="8efb68de-70f6-4e1f-a0a3-3b8e0124a89f" />
+    <Project Path="Infrastructure/Infrastructure.csproj" Id="2180a6d6-9baf-4b5d-90bb-cd479830b326" />
+    <Project Path="Monitoring.AppHost/Monitoring.AppHost.csproj" Id="a0e38621-c91c-4ae8-b546-fb2fa53dac20" />
+    <Project Path="Monitoring.ServiceDefaults/Monitoring.ServiceDefaults.csproj" />
+    <Project Path="WebApi/WebApi.csproj" Id="20dcdabd-0831-4821-82f4-519732baf022" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="WebApi.Tests/WebApi.Tests.csproj" />
+  </Folder>
+  <Project Path="frontend/frontend.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
