@@ -41,6 +41,39 @@ namespace Infrastructure.Migrations
 
                     b.ToTable("AuthSessions");
                 });
+
+            modelBuilder.Entity("Domain.Entities.IdempotencyRecord", b =>
+                {
+                    b.Property<byte[]>("Key")
+                        .HasMaxLength(32)
+                        .HasColumnType("varbinary(32)");
+
+                    b.Property<byte[]>("Body")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("ContentType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("RequestHash")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("varbinary(32)");
+
+                    b.Property<int?>("StatusCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("Key");
+
+                    b.HasIndex("ExpiresAt");
+
+                    b.ToTable("IdempotencyRecords");
+                });
 #pragma warning restore 612, 618
         }
     }

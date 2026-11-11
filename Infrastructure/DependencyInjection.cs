@@ -24,6 +24,7 @@ namespace Infrastructure
 
             // Scoped
             services.AddScoped<IAuthSessionRepository, AuthSessionRepository>();
+            services.AddScoped<IIdempotencyRepository, IdempotencyRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             
             // Singleton
