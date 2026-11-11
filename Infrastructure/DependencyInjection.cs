@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Infrastructure.Persistence;
 using Infrastructure.Persistence.Context;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,8 @@ namespace Infrastructure
 
             // Scoped
             services.AddScoped<IAuthSessionRepository, AuthSessionRepository>();
-
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
             // Singleton
 
 
