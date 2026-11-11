@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace WebApi.Controllers
 {
@@ -11,9 +12,8 @@ namespace WebApi.Controllers
     public class AccountController : ControllerBase
     {
         [HttpGet("me")]
-        public IActionResult Me() => Ok(new ResponseDto<object> { Data = new { fullName = User.Identity!.Name } });
+        public IActionResult Me() => Ok(new ResponseDto<object> { Data = new { fullName = User.Identity!.Name, swipeId = User.FindFirstValue("preferred_username") } });
 
-        // A full page load from the Vue app: it hands the browser to the DRMCAppManagement login page.
         [AllowAnonymous]
         [HttpGet("login")]
         public IActionResult Login(string? returnUrl) => Challenge(

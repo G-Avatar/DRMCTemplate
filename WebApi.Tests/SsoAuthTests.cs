@@ -104,7 +104,8 @@ namespace WebApi.Tests
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             var body = await response.Content.ReadFromJsonAsync<JsonElement>();
-            Assert.Equal("TEST-1", body.GetProperty("data").GetProperty("fullName").GetString());
+            Assert.Equal("Juan Dela Cruz", body.GetProperty("data").GetProperty("fullName").GetString());
+            Assert.Equal("TEST-1", body.GetProperty("data").GetProperty("swipeId").GetString());
         }
 
         [Fact]
@@ -229,7 +230,8 @@ namespace WebApi.Tests
         [HttpGet]
         public async Task<IActionResult> SignIn()
         {
-            var identity = new ClaimsIdentity([new Claim("name", "TEST-1")], CookieAuthenticationDefaults.AuthenticationScheme, "name", null);
+            // The claims the portal puts in the id token.
+            var identity = new ClaimsIdentity([new Claim("name", "Juan Dela Cruz"), new Claim("preferred_username", "TEST-1")], CookieAuthenticationDefaults.AuthenticationScheme, "name", null);
             var properties = new AuthenticationProperties();
             properties.StoreTokens([new AuthenticationToken { Name = "access_token", Value = "test-token" }]);
 
